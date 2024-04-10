@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import useWindowDimensions from '../hooks/use-window-dimensions';
 import { useTranslation } from 'react-i18next';
 

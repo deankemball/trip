@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import TouchPad from "./components/touch-pad";
 import ColorPalette from "./components/color-palette";
 import "./i18n";
-import { useTranslation, Trans } from "react-i18next";
-import i18n from "./i18n";
+import { useTranslation } from "react-i18next";
 
 
 function App() {
