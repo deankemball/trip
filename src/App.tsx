@@ -3,6 +3,10 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import TouchPad from "./components/touch-pad";
 import ColorPalette from "./components/color-palette";
+import "./i18n";
+import { useTranslation, Trans } from "react-i18next";
+import i18n from "./i18n";
+
 
 function App() {
   const [socket, setSocket] = useState<WebSocket | null>(null);
@@ -42,9 +46,11 @@ function App() {
   const [currPosition, setCurrPosition] = useState({x: 0, y: 0})
   const [currColor, setCurrColor] = useState(0)
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     socket?.send(JSON.stringify({
-      position: currPosition
+      position: [currColor, currPosition]
     }))
   }, [currPosition]);
 
