@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { useState, useEffect } from "react";
 import TouchPad from "./components/touch-pad";
+import ColorPalette from "./components/color-palette";
 
 function App() {
   const [socket, setSocket] = useState<WebSocket | null>(null);
@@ -20,6 +21,8 @@ function App() {
       }
       if(message.data === 'touchStart') return
       if(message.data === 'touchEnd') return
+      if(message.data.includes('color')) return
+      if(message.data.includes('position')) return
       // let data = JSON.parse(message.data);
       // if ("slider2" in data) {
       //   let val = data["slider2"];
@@ -37,6 +40,7 @@ function App() {
   }, []);
 
   const [currPosition, setCurrPosition] = useState({x: 0, y: 0})
+  const [currColor, setCurrColor] = useState(0)
 
   useEffect(() => {
     socket?.send(JSON.stringify({
@@ -44,8 +48,14 @@ function App() {
     }))
   }, [currPosition]);
 
+  useEffect(() => {
+    socket?.send(JSON.stringify({
+      color: currColor
+    }))
+  }, [currColor]);
+
   return (
-    <div className="text-white bg-black h-[100dvh] w-screen flex items-center justify-center p-6 overscroll-none">
+    <div className="text-white bg-black h-[100dvh-48px] w-screen flex items-center justify-center p-6 overscroll-none flex-col md:flex-row gap-2">
       {/* <h2>Slider to control TD</h2>
       <input
         type="range"
@@ -61,6 +71,7 @@ function App() {
       <h2>Slider controlled by TD</h2>
       <input readOnly type="range" id="fromTD" value={slider2} /> */}
     <TouchPad currPosition={currPosition} setCurrPosition={setCurrPosition} socket={socket} />
+    <ColorPalette currColor={currColor} setCurrColor={setCurrColor} />
     </div>
   );
 }

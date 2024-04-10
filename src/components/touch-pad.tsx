@@ -13,20 +13,21 @@ const TouchPad = ({currPosition, setCurrPosition, socket}: TouchPadProps) => {
 
   function onTouchStart(event: any) {
     socket?.send("touchStart")
+    setCurrPosition({x: event.touches[0].clientX / width, y: event.touches[0].clientY / height})
   }
   function onTouchEnd(event: any) {
     socket?.send("touchEnd")
   }
 
-  function onTouchMove(event: any) {
-    setCurrPosition({x: event.touches[0].clientX / width, y: event.touches[0].clientY / height})
-  }
+  // function onTouchMove(event: any) {
+  //   setCurrPosition({x: event.touches[0].clientX / width, y: event.touches[0].clientY / height})
+  // }
 
   return (
-    <div className='bg-white/20 border-2 border-white rounded-md h-full w-full flex flex-col justify-end items-start text-xl p-8'
+    <div className='bg-white/20 border-2 border-white rounded-md h-[calc(100dvh-152px)] md:h-[calc(100dvh-48px)] w-full flex flex-col justify-end items-start text-xl p-8 select-none'
     onTouchStart={onTouchStart}
     onTouchEnd={onTouchEnd}
-    onTouchMove={onTouchMove}
+    // onTouchMove={onTouchMove}
     >
       <p>{`x: ${currPosition.x }`}</p>
       <p>{`y: ${currPosition.y}`}</p>
