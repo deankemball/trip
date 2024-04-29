@@ -72,15 +72,17 @@ function App() {
 
   function submitJoin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setNameEntered(true);
-    const id = crypto.randomUUID();
-    setId(id);
-    socket?.send(
-      JSON.stringify({
-        joined: name,
-        id,
-      })
-    );
+    if (name.length > 0) {
+      setNameEntered(true);
+      const id = crypto.randomUUID();
+      setId(id);
+      socket?.send(
+        JSON.stringify({
+          joined: name,
+          id,
+        })
+      );
+    }
   }
 
   function submitQuit(e: React.FormEvent<HTMLFormElement>) {
