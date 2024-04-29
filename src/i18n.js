@@ -10,6 +10,7 @@ const resources = {
           first: "1. Enter your name",
           second: "2. Select a color",
           third: "3. Tap anywhere here",
+          fourth: "4. Tap the X to exit the game",
         },
         input: {
           label: "name:",
@@ -29,9 +30,10 @@ const resources = {
     translation: {
       instructions: {
         touchpad: {
-          first: "1. Geben Sie Ihren Namen ein",
-          second: "2. Wählen Sie eine Farbe aus",
-          third: "3. Tippen Sie hier irgendwo",
+          first: "1. Gib deinen Namen ein",
+          second: "2. Wähl eine Farbe aus",
+          third: "3. Tipp hier irgendwo",
+          fourth: "4. Tipp auf das X, um das Spiel zu verlassen",
         },
         input: {
           label: "Name:",

@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import TouchPad from "./components/touch-pad";
 import ColorPalette from "./components/color-palette";
 import "./i18n";
-import { useTranslation } from "react-i18next";
-import clsx from "clsx";
 import NameForm from "./components/name-form";
 import QuitForm from "./components/quit-form";
 
@@ -48,14 +46,15 @@ function App() {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [nameEntered, setNameEntered] = useState(false);
-
-  const { t } = useTranslation();
+  const [firstTap, setFirstTap] = useState(false);
 
   useEffect(() => {
+    if (currPosition.x > 0) setFirstTap(true);
     socket?.send(
       JSON.stringify({
-        name: name,
+        name,
         position: [currColor, currPosition],
+        id,
       })
     );
   }, [currPosition]);
@@ -97,6 +96,7 @@ function App() {
     setId("");
     setCurrColor(null);
     setName("");
+    setFirstTap(false);
   }
 
   function resetEverything() {
@@ -104,11 +104,12 @@ function App() {
     setName("");
     setCurrColor(null);
     setId("");
+    setFirstTap(false);
   }
 
   return (
-    <div className="text-white bg-black h-[100dvh-48px] w-screen flex items-center justify-center p-6 overscroll-none flex-col md:flex-row gap-2">
-      <div className="flex flex-col gap-2 w-full">
+    <div className="select-none text-white bg-black h-[100dvh-48px] w-screen flex items-center justify-center p-6 overscroll-none flex-col md:flex-row gap-2">
+      <div className="flex flex-col gap-2 w-full z-50">
         {nameEntered ? (
           <QuitForm
             socket={socket}
@@ -133,6 +134,7 @@ function App() {
           socket={socket}
           nameEntered={nameEntered}
           currColor={currColor}
+          firstTap={firstTap}
         />
       </div>
       <ColorPalette
