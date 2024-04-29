@@ -49,6 +49,8 @@
   "devDependencies": {
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
+    "@types/uuid": "^9.0.8",
+    "prettier": "^3.2.5",
     "source-map-loader": "^5.0.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.4"

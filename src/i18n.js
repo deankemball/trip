@@ -6,29 +6,47 @@ const resources = {
   en: {
     translation: {
       instructions: {
-        touchpad: "select a color and tap anywhere here"
+        touchpad: {
+          first: "1. Enter your name",
+          second: "2. Select a color",
+          third: "3. Tap anywhere here",
+        },
+        input: {
+          label: "name:",
+          placeholder: "your name...",
+          button: "send",
+        },
       },
       colors: {
-        white: "white", 
+        white: "white",
         pink: "pink",
         blue: "blue",
-        orange:"orange"
-      }
+        orange: "orange",
+      },
     },
   },
   de: {
     translation: {
       instructions: {
-        touchpad: "Wähl eine Farbe aus und tippe irgendwo hierhin"
+        touchpad: {
+          first: "1. Geben Sie Ihren Namen ein",
+          second: "2. Wählen Sie eine Farbe aus",
+          third: "3. Tippen Sie hier irgendwo",
+        },
+        input: {
+          label: "Name:",
+          placeholder: "deinen Namen...",
+          button: "Schicken",
+        },
       },
       colors: {
-        white: "weiß", 
+        white: "weiß",
         pink: "rosa",
         blue: "blau",
-        orange:"orange"
-      }
+        orange: "orange",
+      },
+    },
   },
-}
 };
 
 i18n
