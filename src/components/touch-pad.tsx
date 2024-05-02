@@ -9,7 +9,7 @@ interface TouchPadProps {
   setCurrPosition: Dispatch<SetStateAction<{ x: number; y: number }>>;
   socket: WebSocket | null;
   nameEntered: boolean;
-  currColor: number | null;
+  currColor: number;
   firstTap: boolean;
 }
 
@@ -53,8 +53,8 @@ const TouchPad = ({
   return (
     <div
       className="bg-white/20 border-2 border-white rounded-md h-[calc(100dvh-208px)] md:h-[calc(100dvh-104px)] w-full flex flex-col justify-end items-center text-xl p-8 select-none z-50"
-      onTouchStart={nameEntered && currColor ? onTouchStart : () => null}
-      onTouchEnd={nameEntered && currColor ? onTouchEnd : () => null}
+      onTouchStart={nameEntered && currColor >= 0 ? onTouchStart : () => null}
+      onTouchEnd={nameEntered && currColor >= 0 ? onTouchEnd : () => null}
     >
       <p className="w-full leading-[24px] text-left">
         {t("instructions.touchpad.first")}

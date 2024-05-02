@@ -3,8 +3,8 @@ import { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 
 interface ColorPaletteProps {
-  currColor: number | null;
-  setCurrColor: Dispatch<SetStateAction<number | null>>;
+  currColor: number;
+  setCurrColor: Dispatch<SetStateAction<number>>;
   nameEntered: boolean;
 }
 

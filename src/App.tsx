@@ -42,7 +42,7 @@ function App() {
   }, []);
 
   const [currPosition, setCurrPosition] = useState({ x: 0, y: 0 });
-  const [currColor, setCurrColor] = useState<number | null>(null);
+  const [currColor, setCurrColor] = useState(-1);
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [nameEntered, setNameEntered] = useState(false);
@@ -96,7 +96,7 @@ function App() {
     );
     setNameEntered(false);
     setId("");
-    setCurrColor(null);
+    setCurrColor(-1);
     setName("");
     setFirstTap(false);
   }
@@ -104,7 +104,7 @@ function App() {
   function resetEverything() {
     setNameEntered(false);
     setName("");
-    setCurrColor(null);
+    setCurrColor(-1);
     setId("");
     setFirstTap(false);
   }
